@@ -1,28 +1,51 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+   
+    <Header />
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <Info :message="message" @Changename="message = $event"/>
+        </div>
+        <div class="col-md-6">
+          <Details />
+          
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import Header from './components/header/Header.vue'
+import Info from './components/User/Info.vue'
+import Details from './components/User/Details'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    Header,
+    Info,
+    Details
+  },
+  data(){
+    return {
+      message: 'I love vue js'
+    }
+  },
+
+  methods:{
+    updateMessage(value){
+      this.message = value
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
